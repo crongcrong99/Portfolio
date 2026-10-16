@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f3f3f3" />
+  <title>Portfolio</title>
+  <meta name="description" content="Personal portfolio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ===== Top bar: brand + language switcher ===== -->
+  <header class="topbar">
+    <a class="brand" href="#home" data-bind="brand">YN</a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ko">한국어</button>
+      <button type="button" data-lang="zh">中文</button>
+    </div>
+  </header>
+
+  <!-- ===== Side navigation (vertical on desktop, horizontal bar on mobile) ===== -->
+  <nav class="sidenav" aria-label="Sections">
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#projects" data-i18n="nav.projects">Projects</a>
+    <a href="#works" data-i18n="nav.works">Portfolio</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+
+  <main>
+    <!-- ===== HERO (bento layout) ===== -->
+    <section id="home" class="hero">
+      <!-- About Me card -->
+      <article class="about-card">
+        <span class="about-tab">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 15 6l-3 3.5L9 6zM12 14.5l3 3.5-3 3.5-3-3.5zM2.5 12 6 9l3.5 3L6 15zM14.5 12 18 9l3.5 3L18 15z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span data-i18n="hero.aboutTab">About Me</span>
+        </span>
+
+        <div class="portrait">
+          <div class="portrait-ring"></div>
+          <div class="portrait-bg"></div>
+          <div class="portrait-img" data-bind="photo"></div>
+        </div>
+
+        <div class="about-text">
+          <p class="greeting" data-i18n="hero.greeting">I'm,</p>
+          <h1 class="name" data-bind="name">Your Name</h1>
+          <p class="role" data-bind="role"></p>
+          <a class="email" data-bind="email" href="#">
+            <span data-bind="emailText">hello@example.com</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13h5l1.5 2.5h5L16 13h5M5 5h14l2 8v6H3v-6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="badge" aria-hidden="true">
+          <svg viewBox="0 0 120 120" class="badge-ring">
+            <defs><path id="badgeCircle" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/></defs>
+            <text textLength="262" lengthAdjust="spacing"><textPath href="#badgeCircle" data-bind="badgeText">MY PORTFOLIO • 2026 •</textPath></text>
+          </svg>
+          <span class="badge-dot"></span>
+        </div>
+      </article>
+
+      <!-- Right side bento -->
+      <div class="bento">
+        <h2 class="big-title"><span data-i18n="hero.title">Portfolio</span><i class="corner"></i></h2>
+
+        <div class="bento-row bento-row--top">
+          <a class="tile tile-media" href="#works" data-bind="featured">
+            <div class="media-art" data-bind="featuredImage"></div>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="tile-caption" data-bind="featuredCaption"></span>
+            <i class="corner corner--light"></i>
+          </a>
+
+          <div class="stat-stack">
+            <a class="tile tile-stat tile-teal" href="#projects">
+              <strong data-bind="stat0Value">00</strong>
+              <span data-bind="stat0Label">Projects</span>
+              <i class="corner"></i>
+            </a>
+            <a class="tile tile-stat tile-violet" href="#works">
+              <strong data-bind="stat1Value">00</strong>
+              <span data-bind="stat1Label">Works</span>
+              <i class="corner corner--light"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="bento-row bento-row--bottom">
+          <a class="tile tile-gray" href="#about">
+            <svg class="tile-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z" fill="currentColor"/></svg>
+            <span data-i18n="hero.skillsTile">Skills</span>
+            <i class="corner corner--light"></i>
+          </a>
+          <a class="tile tile-split" href="#contact">
+            <div class="split-dark"><div class="sphere"></div></div>
+            <div class="split-yellow">
+              <strong data-bind="highlightValue">00</strong>
+              <span data-bind="highlightLabel">Highlight</span>
+              <i class="corner"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
+      <header class="section-head">
+        <span class="section-num">01</span>
+        <h2 data-i18n="sections.about.title">About Me</h2>
+        <p data-i18n="sections.about.subtitle">Who I am</p>
+      </header>
+      <div class="about-grid">
+        <div class="panel panel-intro" data-bind="intro"></div>
+        <div class="panel panel-details">
+          <h3 data-i18n="sections.about.details">Details</h3>
+          <dl class="details" data-bind="details"></dl>
+        </div>
+        <div class="panel panel-skills">
+          <h3 data-i18n="sections.about.skills">Skills</h3>
+          <ul class="tags" data-bind="skills"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="section">
+      <header class="section-head">
+        <span class="section-num">02</span>
+        <h2 data-i18n="sections.projects.title">Projects</h2>
+        <p data-i18n="sections.projects.subtitle">Things I have built</p>
+      </header>
+      <div class="project-list" data-bind="projects"></div>
+    </section>
+
+    <!-- ===== PORTFOLIO WORKS ===== -->
+    <section id="works" class="section">
+      <header class="section-head">
+        <span class="section-num">03</span>
+        <h2 data-i18n="sections.works.title">Portfolio Works</h2>
+        <p data-i18n="sections.works.subtitle">Selected work</p>
+      </header>
+      <div class="work-grid" data-bind="works"></div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section">
+      <div class="contact-card">
+        <span class="section-num">04</span>
+        <h2 data-i18n="sections.contact.title">Let's work together</h2>
+        <p data-i18n="sections.contact.subtitle">Feel free to reach out.</p>
+        <a class="contact-email" data-bind="contactEmail" href="#"></a>
+        <ul class="links" data-bind="links"></ul>
+        <i class="corner"></i>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span data-bind="footer">© 2026</span>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
