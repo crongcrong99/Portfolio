@@ -4,6 +4,8 @@ Personal portfolio website — plain HTML/CSS/JS, no build step. Works on deskto
 
 ## View it
 
+**Live site:** https://crongcrong99.github.io/Portfolio/ (GitHub Pages — enable it under *Settings → Pages* if it isn't live yet)
+
 Open `index.html` in a browser, or serve the folder (e.g. `python3 -m http.server`) / publish it with GitHub Pages.
 You can force a language with `?lang=en`, `?lang=ko` or `?lang=zh`.
 
