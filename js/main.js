@@ -223,6 +223,7 @@
     renderProjects();
     renderWorks();
     renderContact();
+    updateThemeUI();
   }
 
   /* ---------- language ---------- */
@@ -246,6 +247,53 @@
   document.querySelectorAll(".lang-switch button").forEach(function (b) {
     b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
   });
+
+  /* ---------- light / dark theme ---------- */
+  var THEME_KEY = "portfolio-theme";
+  var THEME_COLOR = { light: "#f3f3f3", dark: "#111114" };
+  var themeBtn = document.querySelector(".theme-toggle");
+
+  function currentTheme() {
+    return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+  }
+
+  function updateThemeUI() {
+    var theme = currentTheme();
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", THEME_COLOR[theme]);
+    if (themeBtn) {
+      var label = ui(theme === "dark" ? "misc.toLight" : "misc.toDark");
+      themeBtn.setAttribute("aria-label", label);
+      themeBtn.setAttribute("title", label);
+      themeBtn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+    }
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) { /* storage unavailable */ }
+    updateThemeUI();
+  }
+
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      setTheme(currentTheme() === "dark" ? "light" : "dark");
+    });
+  }
+
+  // follow system changes until the visitor picks a theme themselves
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    var onSystemChange = function (e) {
+      var saved = null;
+      try { saved = localStorage.getItem(THEME_KEY); } catch (err) { /* storage unavailable */ }
+      if (saved) return;
+      document.documentElement.setAttribute("data-theme", e.matches ? "dark" : "light");
+      updateThemeUI();
+    };
+    if (mq.addEventListener) mq.addEventListener("change", onSystemChange);
+    else if (mq.addListener) mq.addListener(onSystemChange);
+  }
 
   /* ---------- active nav link on scroll ---------- */
   function initScrollSpy() {

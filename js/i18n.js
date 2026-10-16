@@ -21,7 +21,9 @@ window.I18N = {
     misc: {
       viewProject: "View project",
       addImage: "Add image",
-      empty: "Coming soon"
+      empty: "Coming soon",
+      toLight: "Switch to light mode",
+      toDark: "Switch to dark mode"
     }
   },
 
@@ -43,7 +45,9 @@ window.I18N = {
     misc: {
       viewProject: "프로젝트 보기",
       addImage: "이미지 추가",
-      empty: "준비 중"
+      empty: "준비 중",
+      toLight: "라이트 모드로 전환",
+      toDark: "다크 모드로 전환"
     }
   },
 
@@ -65,7 +69,9 @@ window.I18N = {
     misc: {
       viewProject: "查看项目",
       addImage: "添加图片",
-      empty: "敬请期待"
+      empty: "敬请期待",
+      toLight: "切换到浅色模式",
+      toDark: "切换到深色模式"
     }
   }
 };
