@@ -6,7 +6,7 @@ window.I18N = {
   en: {
     nav: { about: "About", projects: "Projects", works: "Portfolio", contact: "Contact" },
     hero: {
-      aboutTab: "About Me",
+      aboutTab: "About",
       greeting: "I'm,",
       title: "Portfolio",
       skillsTile: "Skills",
